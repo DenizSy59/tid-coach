@@ -16,8 +16,12 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
 import { Route as LayoutAdminRouteImport } from './routes/_layout/admin'
+import { Route as LayoutDictionaryRouteImport } from './routes/_layout/dictionary'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
+import { Route as LayoutMySignsRouteImport } from './routes/_layout/my-signs'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
+import { Route as LayoutTeacherRouteImport } from './routes/_layout/teacher'
+import { Route as LayoutTranslatorRouteImport } from './routes/_layout/translator'
 
 const LayoutRoute = LayoutRouteImport.update({
   id: '/_layout',
@@ -53,14 +57,34 @@ const LayoutAdminRoute = LayoutAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutDictionaryRoute = LayoutDictionaryRouteImport.update({
+  id: '/dictionary',
+  path: '/dictionary',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutItemsRoute = LayoutItemsRouteImport.update({
   id: '/items',
   path: '/items',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutMySignsRoute = LayoutMySignsRouteImport.update({
+  id: '/my-signs',
+  path: '/my-signs',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutTeacherRoute = LayoutTeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutTranslatorRoute = LayoutTranslatorRouteImport.update({
+  id: '/translator',
+  path: '/translator',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -71,8 +95,12 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
+  '/dictionary': typeof LayoutDictionaryRoute
   '/items': typeof LayoutItemsRoute
+  '/my-signs': typeof LayoutMySignsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/teacher': typeof LayoutTeacherRoute
+  '/translator': typeof LayoutTranslatorRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
@@ -80,8 +108,12 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
+  '/dictionary': typeof LayoutDictionaryRoute
   '/items': typeof LayoutItemsRoute
+  '/my-signs': typeof LayoutMySignsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/teacher': typeof LayoutTeacherRoute
+  '/translator': typeof LayoutTranslatorRoute
   '/': typeof LayoutIndexRoute
 }
 export interface FileRoutesById {
@@ -92,8 +124,12 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
   '/_layout/admin': typeof LayoutAdminRoute
+  '/_layout/dictionary': typeof LayoutDictionaryRoute
   '/_layout/items': typeof LayoutItemsRoute
+  '/_layout/my-signs': typeof LayoutMySignsRoute
   '/_layout/settings': typeof LayoutSettingsRoute
+  '/_layout/teacher': typeof LayoutTeacherRoute
+  '/_layout/translator': typeof LayoutTranslatorRoute
   '/_layout/': typeof LayoutIndexRoute
 }
 export interface FileRouteTypes {
@@ -105,8 +141,12 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/admin'
+    | '/dictionary'
     | '/items'
+    | '/my-signs'
     | '/settings'
+    | '/teacher'
+    | '/translator'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -114,8 +154,12 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/admin'
+    | '/dictionary'
     | '/items'
+    | '/my-signs'
     | '/settings'
+    | '/teacher'
+    | '/translator'
     | '/'
   id:
     | '__root__'
@@ -125,8 +169,12 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signup'
     | '/_layout/admin'
+    | '/_layout/dictionary'
     | '/_layout/items'
+    | '/_layout/my-signs'
     | '/_layout/settings'
+    | '/_layout/teacher'
+    | '/_layout/translator'
     | '/_layout/'
   fileRoutesById: FileRoutesById
 }
@@ -189,11 +237,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAdminRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/dictionary': {
+      id: '/_layout/dictionary'
+      path: '/dictionary'
+      fullPath: '/dictionary'
+      preLoaderRoute: typeof LayoutDictionaryRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/items': {
       id: '/_layout/items'
       path: '/items'
       fullPath: '/items'
       preLoaderRoute: typeof LayoutItemsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/my-signs': {
+      id: '/_layout/my-signs'
+      path: '/my-signs'
+      fullPath: '/my-signs'
+      preLoaderRoute: typeof LayoutMySignsRouteImport
       parentRoute: typeof LayoutRoute
     }
     '/_layout/settings': {
@@ -203,20 +265,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutSettingsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/teacher': {
+      id: '/_layout/teacher'
+      path: '/teacher'
+      fullPath: '/teacher'
+      preLoaderRoute: typeof LayoutTeacherRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/translator': {
+      id: '/_layout/translator'
+      path: '/translator'
+      fullPath: '/translator'
+      preLoaderRoute: typeof LayoutTranslatorRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
 interface LayoutRouteChildren {
   LayoutAdminRoute: typeof LayoutAdminRoute
+  LayoutDictionaryRoute: typeof LayoutDictionaryRoute
   LayoutItemsRoute: typeof LayoutItemsRoute
+  LayoutMySignsRoute: typeof LayoutMySignsRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
+  LayoutTeacherRoute: typeof LayoutTeacherRoute
+  LayoutTranslatorRoute: typeof LayoutTranslatorRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAdminRoute: LayoutAdminRoute,
+  LayoutDictionaryRoute: LayoutDictionaryRoute,
   LayoutItemsRoute: LayoutItemsRoute,
+  LayoutMySignsRoute: LayoutMySignsRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
+  LayoutTeacherRoute: LayoutTeacherRoute,
+  LayoutTranslatorRoute: LayoutTranslatorRoute,
   LayoutIndexRoute: LayoutIndexRoute,
 }
 
