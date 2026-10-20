@@ -1,6 +1,7 @@
 import { Languages } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -51,5 +52,37 @@ export const SidebarLanguage = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </SidebarMenuItem>
+  )
+}
+
+export const LanguageToggle = () => {
+  const { t, i18n } = useTranslation()
+  const current = (
+    i18n.language in LANGUAGES ? i18n.language : "tr"
+  ) as Language
+
+  return (
+    <div className="flex items-center justify-center">
+      <DropdownMenu modal={false}>
+        <DropdownMenuTrigger asChild>
+          <Button data-testid="language-button" variant="outline" size="icon">
+            <Languages className="h-[1.2rem] w-[1.2rem]" />
+            <span className="sr-only">{t("common.language")}</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          {(Object.keys(LANGUAGES) as Language[]).map((code) => (
+            <DropdownMenuItem
+              key={code}
+              data-testid={`language-${code}`}
+              onClick={() => setLanguage(code)}
+            >
+              {LANGUAGES[code]}
+              {code === current ? " ✓" : ""}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   )
 }
