@@ -1,9 +1,14 @@
 import { expect, test } from "@playwright/test"
+import { setEnglish } from "./utils/language.ts"
 import { waitForEmailHtml } from "./utils/mailpit"
 import { randomEmail, randomPassword } from "./utils/random"
 import { logInUser, signUpNewUser } from "./utils/user"
 
 test.use({ storageState: { cookies: [], origins: [] } })
+
+test.beforeEach(async ({ page }) => {
+  await setEnglish(page)
+})
 
 const resetPath = "/reset-password?token="
 

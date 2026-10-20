@@ -1,8 +1,12 @@
 import { expect, type Page, test } from "@playwright/test"
-
+import { setEnglish } from "./utils/language.ts"
 import { randomEmail, randomPassword } from "./utils/random"
 
 test.use({ storageState: { cookies: [], origins: [] } })
+
+test.beforeEach(async ({ page }) => {
+  await setEnglish(page)
+})
 
 const fillForm = async (
   page: Page,

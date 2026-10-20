@@ -1,4 +1,5 @@
 import { expect, type Page } from "@playwright/test"
+import { setEnglish } from "./language"
 
 export async function signUpNewUser(
   page: Page,
@@ -6,6 +7,7 @@ export async function signUpNewUser(
   email: string,
   password: string,
 ) {
+  await setEnglish(page)
   await page.goto("/signup")
 
   await page.getByTestId("full-name-input").fill(name)
@@ -17,6 +19,7 @@ export async function signUpNewUser(
 }
 
 export async function logInUser(page: Page, email: string, password: string) {
+  await setEnglish(page)
   await page.goto("/login")
 
   await page.getByTestId("email-input").fill(email)

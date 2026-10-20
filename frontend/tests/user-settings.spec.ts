@@ -1,8 +1,13 @@
 import { expect, test } from "@playwright/test"
 import { firstSuperuser, firstSuperuserPassword } from "./config.ts"
+import { setEnglish } from "./utils/language.ts"
 import { createUser } from "./utils/privateApi.ts"
 import { randomEmail, randomPassword } from "./utils/random"
 import { logInUser, logOutUser } from "./utils/user"
+
+test.beforeEach(async ({ page }) => {
+  await setEnglish(page)
+})
 
 const tabs = ["My profile", "Password", "Danger zone"]
 

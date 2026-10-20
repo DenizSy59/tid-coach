@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { setEnglish } from "./utils/language.ts"
 import { createUser } from "./utils/privateApi"
 import {
   randomEmail,
@@ -7,6 +8,10 @@ import {
   randomPassword,
 } from "./utils/random"
 import { logInUser } from "./utils/user"
+
+test.beforeEach(async ({ page }) => {
+  await setEnglish(page)
+})
 
 test("Items page is accessible and shows correct title", async ({ page }) => {
   await page.goto("/items")
