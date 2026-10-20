@@ -39,6 +39,16 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 })
 
+/** Keeps <html lang> in step, so screen readers use the right voice. */
+function applyDocumentLanguage(language: string) {
+  if (typeof document !== "undefined") {
+    document.documentElement.lang = language
+  }
+}
+
+applyDocumentLanguage(i18n.language)
+i18n.on("languageChanged", applyDocumentLanguage)
+
 export function setLanguage(language: Language) {
   i18n.changeLanguage(language)
   try {

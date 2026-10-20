@@ -73,3 +73,16 @@ test("Validation messages follow the language", async ({ page }) => {
   await page.getByTestId("password-input").click()
   await expect(page.getByText("Invalid email address")).toBeVisible()
 })
+
+test("The page language attribute follows the chosen language", async ({
+  page,
+}) => {
+  await page.goto("/login")
+  await expect(page.locator("html")).toHaveAttribute("lang", "tr")
+
+  await page.getByTestId("language-button").click()
+  await page.getByRole("menuitem", { name: "English" }).click()
+
+  // Screen readers need this to switch voice with the wording.
+  await expect(page.locator("html")).toHaveAttribute("lang", "en")
+})
