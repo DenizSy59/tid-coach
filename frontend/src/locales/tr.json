@@ -34,7 +34,14 @@
     "notSure": "Bunun hangi işaret olduğundan emin değilim. Tekrar dene ve ellerini görüntünün içinde tut.",
     "signLabel": "İşaret {{id}}",
     "uploadTitle": "Kısa bir video yükle",
-    "uploadNotReady": "Video yükleme henüz hazır değil."
+    "uploadNotReady": "Video yükleme henüz hazır değil.",
+    "chooseVideo": "Video seç",
+    "noFileChosen": "Henüz dosya seçilmedi",
+    "uploadAndTranslate": "Yükle ve çevir",
+    "uploading": "Yükleniyor...",
+    "tooLarge": "Video çok büyük. En fazla 20 MB olabilir.",
+    "uploadFailed": "Video çevrilemedi. Lütfen tekrar dene.",
+    "videoHint": "Tek bir işaret içeren kısa bir MP4 ya da WebM videosu seç. Video işlendikten sonra sunucudan silinir."
   },
   "teacher": {
     "description": "Bir işaret seç, örnek videoyu izle, kamerada taklit et ve ne kadar yakın olduğunu gör.",

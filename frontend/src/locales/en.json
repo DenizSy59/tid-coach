@@ -34,7 +34,14 @@
     "notSure": "Not sure which sign that was. Try again, and keep your hands inside the picture.",
     "signLabel": "Sign {{id}}",
     "uploadTitle": "Upload a short video",
-    "uploadNotReady": "Uploading a video is not ready yet."
+    "uploadNotReady": "Uploading a video is not ready yet.",
+    "chooseVideo": "Choose a video",
+    "noFileChosen": "No file chosen",
+    "uploadAndTranslate": "Upload and translate",
+    "uploading": "Uploading...",
+    "tooLarge": "The video is too large. It can be at most 20 MB.",
+    "uploadFailed": "Could not translate the video. Please try again.",
+    "videoHint": "Pick a short MP4 or WebM video of a single sign. The video is deleted from the server once it has been read."
   },
   "teacher": {
     "description": "Pick a sign, watch the reference video, copy it on camera, and see how close you were.",

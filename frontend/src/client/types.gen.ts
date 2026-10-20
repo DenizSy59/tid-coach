@@ -35,6 +35,16 @@ export type Body_login_login_access_token = {
 };
 
 /**
+ * Body_translate-translate_video
+ */
+export type Body_translate_translate_video = {
+    /**
+     * File
+     */
+    file: Blob | File;
+};
+
+/**
  * HTTPValidationError
  */
 export type HTTPValidationError = {
@@ -264,6 +274,30 @@ export type SavedSignsPublic = {
      * Count
      */
     count: number;
+};
+
+/**
+ * SignPrediction
+ */
+export type SignPrediction = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+    /**
+     * Confidence
+     */
+    confidence: number;
+};
+
+/**
+ * SignPredictions
+ */
+export type SignPredictions = {
+    /**
+     * Data
+     */
+    data: Array<SignPrediction>;
 };
 
 /**
@@ -1228,6 +1262,31 @@ export type practiceReadProgressResponses = {
 };
 
 export type practiceReadProgressResponse = practiceReadProgressResponses[keyof practiceReadProgressResponses];
+
+export type translateTranslateVideoData = {
+    body: Body_translate_translate_video;
+    path?: never;
+    query?: never;
+    url: '/api/v1/translate/video';
+};
+
+export type translateTranslateVideoErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type translateTranslateVideoError = translateTranslateVideoErrors[keyof translateTranslateVideoErrors];
+
+export type translateTranslateVideoResponses = {
+    /**
+     * Successful Response
+     */
+    200: SignPredictions;
+};
+
+export type translateTranslateVideoResponse = translateTranslateVideoResponses[keyof translateTranslateVideoResponses];
 
 export type privateCreateUserData = {
     body: PrivateUserCreate;

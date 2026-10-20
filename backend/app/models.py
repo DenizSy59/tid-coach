@@ -203,6 +203,16 @@ class SignProgressPublic(SQLModel):
     count: int
 
 
+# One guess from the sign model
+class SignPrediction(SQLModel):
+    sign_id: int = Field(ge=SIGN_ID_MIN, le=SIGN_ID_MAX)
+    confidence: float = Field(ge=0, le=1)
+
+
+class SignPredictions(SQLModel):
+    data: list[SignPrediction]
+
+
 # Generic message
 class Message(SQLModel):
     message: str

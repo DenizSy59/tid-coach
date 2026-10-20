@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next"
 
 import { HandTracker } from "@/components/Translator/HandTracker"
 import { SignGuesses } from "@/components/Translator/SignGuesses"
+import { VideoUpload } from "@/components/Translator/VideoUpload"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -86,16 +87,7 @@ function Translator() {
         </TabsContent>
 
         <TabsContent value="upload-video">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t("translator.uploadTitle")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-sm">
-                {t("translator.uploadNotReady")}
-              </p>
-            </CardContent>
-          </Card>
+          <VideoUpload />
         </TabsContent>
       </Tabs>
     </div>

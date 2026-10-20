@@ -6,6 +6,7 @@ from app.api.routes import (
     practice,
     private,
     saved_signs,
+    translate,
     users,
     utils,
 )
@@ -18,6 +19,7 @@ api_router.include_router(utils.router)
 api_router.include_router(items.router)
 api_router.include_router(saved_signs.router)
 api_router.include_router(practice.router)
+api_router.include_router(translate.router)
 
 
 if settings.FASTAPI_ENV == "development":
