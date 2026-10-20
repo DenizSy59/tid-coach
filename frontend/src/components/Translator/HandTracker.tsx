@@ -25,10 +25,11 @@ import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/ui/button"
 
-const WASM_PATH =
-  "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.1.1/wasm"
-const MODEL_URL =
-  "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
+// Both are served from frontend/public, so the page works without internet.
+// The wasm files are copied from the @mediapipe/tasks-vision package and the
+// model is the official hand_landmarker float16 model from Google.
+const WASM_PATH = "/wasm"
+const MODEL_URL = "/models/hand_landmarker.task"
 
 type Status = "idle" | "starting" | "running" | "error"
 
