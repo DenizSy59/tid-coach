@@ -53,7 +53,9 @@
     "nothingToWarn": "Nothing to warn about yet.",
     "didNotLookLike": "Your sign did not look like another word.",
     "careful": "Careful: that looked like {{sign}}.",
-    "savedAlready": "Saved"
+    "savedAlready": "Saved",
+    "videoNotAdded": "The video for this sign has not been added yet",
+    "referenceVideoLabel": "Reference video for {{sign}}"
   },
   "dictionary": {
     "description": "Search every sign and open it in Teacher to practise.",

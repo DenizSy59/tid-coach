@@ -53,7 +53,9 @@
     "nothingToWarn": "Henüz uyaracak bir şey yok.",
     "didNotLookLike": "İşaretin başka bir kelimeye benzemedi.",
     "careful": "Dikkat: bu {{sign}} işaretine benziyordu.",
-    "savedAlready": "Kaydedildi"
+    "savedAlready": "Kaydedildi",
+    "videoNotAdded": "Bu işaretin videosu henüz eklenmedi",
+    "referenceVideoLabel": "{{sign}} işaretinin örnek videosu"
   },
   "dictionary": {
     "description": "Tüm işaretleri ara ve Öğretmen sayfasında çalış.",

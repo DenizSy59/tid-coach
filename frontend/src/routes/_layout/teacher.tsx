@@ -1,11 +1,12 @@
 import type { HandLandmarkerResult } from "@mediapipe/tasks-vision"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createFileRoute } from "@tanstack/react-router"
-import { Bookmark, Video } from "lucide-react"
+import { Bookmark } from "lucide-react"
 import { useCallback, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 import { PracticeService, SavedSignsService } from "@/client"
+import { ReferenceVideo } from "@/components/Teacher/ReferenceVideo"
 import { HandTracker } from "@/components/Translator/HandTracker"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -163,16 +164,7 @@ function Teacher() {
             <CardTitle>{t("teacher.referenceVideo")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex aspect-video flex-col items-center justify-center gap-2 rounded-xl border bg-muted text-center">
-              <Video className="size-8 text-muted-foreground" />
-              <p className="text-muted-foreground text-sm">
-                {selected === null
-                  ? t("teacher.pickToSeeVideo")
-                  : t("teacher.videoGoesHere", {
-                      sign: signLabel(selected),
-                    })}
-              </p>
-            </div>
+            <ReferenceVideo signId={selected} />
           </CardContent>
         </Card>
 
