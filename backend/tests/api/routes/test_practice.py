@@ -1,3 +1,5 @@
+from datetime import UTC, datetime, timedelta
+
 from fastapi.testclient import TestClient
 from sqlmodel import Session
 
@@ -126,3 +128,59 @@ def test_progress_only_own_data(
 def test_practice_needs_login(client: TestClient) -> None:
     assert client.get(f"{settings.API_V1_STR}/practice/attempts").status_code == 401
     assert client.get(f"{settings.API_V1_STR}/practice/progress").status_code == 401
+
+
+def test_attempt_keeps_the_time_it_was_practised(
+    client: TestClient, normal_user_token_headers: dict[str, str]
+) -> None:
+    """An attempt practised offline arrives later but keeps its own time."""
+    practised_at = datetime.now(UTC) - timedelta(days=2)
+    response = client.post(
+        f"{settings.API_V1_STR}/practice/attempts",
+        headers=normal_user_token_headers,
+        json={"sign_id": 21, "practised_at": practised_at.isoformat()},
+    )
+    assert response.status_code == 200
+    stored = datetime.fromisoformat(response.json()["created_at"])
+    if stored.tzinfo is None:
+        stored = stored.replace(tzinfo=UTC)
+    assert abs((stored - practised_at).total_seconds()) < 5
+
+
+def test_attempt_without_a_time_is_stamped_now(
+    client: TestClient, normal_user_token_headers: dict[str, str]
+) -> None:
+    response = client.post(
+        f"{settings.API_V1_STR}/practice/attempts",
+        headers=normal_user_token_headers,
+        json={"sign_id": 22},
+    )
+    assert response.status_code == 200
+    stored = datetime.fromisoformat(response.json()["created_at"])
+    if stored.tzinfo is None:
+        stored = stored.replace(tzinfo=UTC)
+    assert abs((stored - datetime.now(UTC)).total_seconds()) < 60
+
+
+def test_attempt_rejects_a_time_in_the_future(
+    client: TestClient, normal_user_token_headers: dict[str, str]
+) -> None:
+    future = datetime.now(UTC) + timedelta(days=1)
+    response = client.post(
+        f"{settings.API_V1_STR}/practice/attempts",
+        headers=normal_user_token_headers,
+        json={"sign_id": 23, "practised_at": future.isoformat()},
+    )
+    assert response.status_code == 422
+
+
+def test_attempt_rejects_a_time_far_in_the_past(
+    client: TestClient, normal_user_token_headers: dict[str, str]
+) -> None:
+    ancient = datetime.now(UTC) - timedelta(days=400)
+    response = client.post(
+        f"{settings.API_V1_STR}/practice/attempts",
+        headers=normal_user_token_headers,
+        json={"sign_id": 24, "practised_at": ancient.isoformat()},
+    )
+    assert response.status_code == 422

@@ -100,7 +100,16 @@ def get_saved_sign(
 def create_practice_attempt(
     *, session: Session, attempt_in: PracticeAttemptCreate, owner_id: uuid.UUID
 ) -> PracticeAttempt:
-    db_attempt = PracticeAttempt.model_validate(attempt_in, update={"owner_id": owner_id})
+    db_attempt = PracticeAttempt(
+        sign_id=attempt_in.sign_id,
+        score=attempt_in.score,
+        predicted_sign_id=attempt_in.predicted_sign_id,
+        owner_id=owner_id,
+    )
+    # An attempt practised without a connection keeps the time it happened,
+    # not the time it finally reached us.
+    if attempt_in.practised_at is not None:
+        db_attempt.created_at = attempt_in.practised_at
     session.add(db_attempt)
     session.commit()
     session.refresh(db_attempt)

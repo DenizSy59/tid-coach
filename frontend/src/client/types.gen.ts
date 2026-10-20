@@ -162,6 +162,10 @@ export type PracticeAttemptCreate = {
      * Predicted Sign Id
      */
     predicted_sign_id?: number | null;
+    /**
+     * Practised At
+     */
+    practised_at?: string | null;
 };
 
 /**

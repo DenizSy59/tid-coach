@@ -1,7 +1,7 @@
 import uuid
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
-from pydantic import EmailStr
+from pydantic import EmailStr, field_validator
 from sqlalchemy import UniqueConstraint
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -163,9 +163,33 @@ class PracticeAttemptBase(SQLModel):
     )
 
 
+# An attempt recorded without a connection may only arrive days later, so the
+# app may say when it happened. These bounds keep that honest.
+PRACTISED_AT_MAX_AGE = timedelta(days=30)
+PRACTISED_AT_CLOCK_SKEW = timedelta(minutes=5)
+
+
 # Properties to receive on recording an attempt
 class PracticeAttemptCreate(PracticeAttemptBase):
-    pass
+    # When the attempt really happened. Left out when online, in which case
+    # the server stamps the time itself.
+    practised_at: datetime | None = None
+
+    @field_validator("practised_at")
+    @classmethod
+    def practised_at_must_be_believable(
+        cls, value: datetime | None
+    ) -> datetime | None:
+        if value is None:
+            return None
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=UTC)
+        now = datetime.now(UTC)
+        if value > now + PRACTISED_AT_CLOCK_SKEW:
+            raise ValueError("practised_at cannot be in the future")
+        if value < now - PRACTISED_AT_MAX_AGE:
+            raise ValueError("practised_at is too far in the past")
+        return value
 
 
 # Database model, database table inferred from class name

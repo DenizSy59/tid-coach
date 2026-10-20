@@ -83,6 +83,7 @@ function Teacher() {
       sign_id: number
       score?: number | null
       predicted_sign_id?: number | null
+      practised_at?: string | null
     }) => PracticeService.createPracticeAttempt({ body }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["practice-attempts"] })
@@ -109,6 +110,9 @@ function Teacher() {
       sign_id: selected,
       score: next?.score ?? null,
       predicted_sign_id: next?.looksLike ?? null,
+      // Sent so an attempt practised offline keeps the time it happened,
+      // not the time it finally reaches the server.
+      practised_at: new Date().toISOString(),
     })
   }, [selected, attemptMutation])
 
