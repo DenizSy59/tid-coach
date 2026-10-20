@@ -2,7 +2,7 @@
 
 import { type Client, type Options as Options2, type TDataShape, urlSearchParamsBodySerializer } from './client';
 import { client } from './client.gen';
-import type { itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
+import type { itemsCreateItemData, itemsCreateItemErrors, itemsCreateItemResponses, itemsDeleteItemData, itemsDeleteItemErrors, itemsDeleteItemResponses, itemsReadItemData, itemsReadItemErrors, itemsReadItemResponses, itemsReadItemsData, itemsReadItemsErrors, itemsReadItemsResponses, itemsUpdateItemData, itemsUpdateItemErrors, itemsUpdateItemResponses, loginLoginAccessTokenData, loginLoginAccessTokenErrors, loginLoginAccessTokenResponses, loginRecoverPasswordData, loginRecoverPasswordErrors, loginRecoverPasswordHtmlContentData, loginRecoverPasswordHtmlContentErrors, loginRecoverPasswordHtmlContentResponses, loginRecoverPasswordResponses, loginResetPasswordData, loginResetPasswordErrors, loginResetPasswordResponses, loginTestTokenData, loginTestTokenResponses, practiceCreatePracticeAttemptData, practiceCreatePracticeAttemptErrors, practiceCreatePracticeAttemptResponses, practiceReadPracticeAttemptsData, practiceReadPracticeAttemptsErrors, practiceReadPracticeAttemptsResponses, practiceReadProgressData, practiceReadProgressResponses, privateCreateUserData, privateCreateUserErrors, privateCreateUserResponses, savedSignsCreateSavedSignData, savedSignsCreateSavedSignErrors, savedSignsCreateSavedSignResponses, savedSignsDeleteSavedSignData, savedSignsDeleteSavedSignErrors, savedSignsDeleteSavedSignResponses, savedSignsReadSavedSignsData, savedSignsReadSavedSignsErrors, savedSignsReadSavedSignsResponses, usersCreateUserData, usersCreateUserErrors, usersCreateUserResponses, usersDeleteUserData, usersDeleteUserErrors, usersDeleteUserMeData, usersDeleteUserMeResponses, usersDeleteUserResponses, usersReadUserByIdData, usersReadUserByIdErrors, usersReadUserByIdResponses, usersReadUserMeData, usersReadUserMeResponses, usersReadUsersData, usersReadUsersErrors, usersReadUsersResponses, usersRegisterUserData, usersRegisterUserErrors, usersRegisterUserResponses, usersUpdatePasswordMeData, usersUpdatePasswordMeErrors, usersUpdatePasswordMeResponses, usersUpdateUserData, usersUpdateUserErrors, usersUpdateUserMeData, usersUpdateUserMeErrors, usersUpdateUserMeResponses, usersUpdateUserResponses, utilsHealthCheckData, utilsHealthCheckResponses, utilsTestEmailData, utilsTestEmailErrors, utilsTestEmailResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -360,6 +360,105 @@ export class ItemsService {
                 'Content-Type': 'application/json',
                 ...options.headers
             }
+        });
+    }
+}
+
+export class SavedSignsService {
+    /**
+     * Read Saved Signs
+     *
+     * Retrieve the signs the current user saved.
+     */
+    public static signsReadSavedSigns<ThrowOnError extends boolean = true>(options?: Options<savedSignsReadSavedSignsData, ThrowOnError>) {
+        return (options?.client ?? client).get<savedSignsReadSavedSignsResponses, savedSignsReadSavedSignsErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/saved-signs/',
+            ...options
+        });
+    }
+    
+    /**
+     * Create Saved Sign
+     *
+     * Save a sign for the current user.
+     */
+    public static signsCreateSavedSign<ThrowOnError extends boolean = true>(options: Options<savedSignsCreateSavedSignData, ThrowOnError>) {
+        return (options.client ?? client).post<savedSignsCreateSavedSignResponses, savedSignsCreateSavedSignErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/saved-signs/',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete Saved Sign
+     *
+     * Remove a saved sign of the current user.
+     */
+    public static signsDeleteSavedSign<ThrowOnError extends boolean = true>(options: Options<savedSignsDeleteSavedSignData, ThrowOnError>) {
+        return (options.client ?? client).delete<savedSignsDeleteSavedSignResponses, savedSignsDeleteSavedSignErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/saved-signs/{sign_id}',
+            ...options
+        });
+    }
+}
+
+export class PracticeService {
+    /**
+     * Read Practice Attempts
+     *
+     * Retrieve the practice attempts of the current user.
+     */
+    public static readPracticeAttempts<ThrowOnError extends boolean = true>(options?: Options<practiceReadPracticeAttemptsData, ThrowOnError>) {
+        return (options?.client ?? client).get<practiceReadPracticeAttemptsResponses, practiceReadPracticeAttemptsErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/practice/attempts',
+            ...options
+        });
+    }
+    
+    /**
+     * Create Practice Attempt
+     *
+     * Record one practice attempt for the current user.
+     *
+     * The score and the guessed sign stay empty until the model fills them in.
+     */
+    public static createPracticeAttempt<ThrowOnError extends boolean = true>(options: Options<practiceCreatePracticeAttemptData, ThrowOnError>) {
+        return (options.client ?? client).post<practiceCreatePracticeAttemptResponses, practiceCreatePracticeAttemptErrors, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/practice/attempts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Read Progress
+     *
+     * Per sign: how many times the current user practised it, the best score and
+     * when it was last practised.
+     */
+    public static readProgress<ThrowOnError extends boolean = true>(options?: Options<practiceReadProgressData, ThrowOnError>) {
+        return (options?.client ?? client).get<practiceReadProgressResponses, unknown, ThrowOnError>({
+            responseType: 'json',
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/practice/progress',
+            ...options
         });
     }
 }

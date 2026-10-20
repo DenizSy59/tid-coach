@@ -5,6 +5,7 @@ import type { ItemPublic } from "@/client"
 import type { DataTableFeatures } from "@/components/Common/DataTable"
 import { Button } from "@/components/ui/button"
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard"
+import i18n from "@/i18n"
 import { cn } from "@/lib/utils"
 import { ItemActionsMenu } from "./ItemActionsMenu"
 
@@ -26,7 +27,7 @@ function CopyId({ id }: { id: string }) {
         ) : (
           <Copy className="size-3" />
         )}
-        <span className="sr-only">Copy ID</span>
+        <span className="sr-only">{i18n.t("items.copyId")}</span>
       </Button>
     </div>
   )
@@ -35,19 +36,19 @@ function CopyId({ id }: { id: string }) {
 export const columns: ColumnDef<DataTableFeatures, ItemPublic>[] = [
   {
     accessorKey: "id",
-    header: "ID",
+    header: i18n.t("items.id"),
     cell: ({ row }) => <CopyId id={row.original.id} />,
   },
   {
     accessorKey: "title",
-    header: "Title",
+    header: i18n.t("items.itemTitle"),
     cell: ({ row }) => (
       <span className="font-medium">{row.original.title}</span>
     ),
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: i18n.t("items.description"),
     cell: ({ row }) => {
       const description = row.original.description
       return (
@@ -57,14 +58,14 @@ export const columns: ColumnDef<DataTableFeatures, ItemPublic>[] = [
             !description && "italic",
           )}
         >
-          {description || "No description"}
+          {description || i18n.t("items.noDescription")}
         </span>
       )
     },
   },
   {
     id: "actions",
-    header: () => <span className="sr-only">Actions</span>,
+    header: () => <span className="sr-only">{i18n.t("common.actions")}</span>,
     cell: ({ row }) => (
       <div className="flex justify-end">
         <ItemActionsMenu item={row.original} />

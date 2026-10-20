@@ -6,8 +6,10 @@ import {
   Users,
   Video,
 } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 import { SidebarAppearance } from "@/components/Common/Appearance"
+import { SidebarLanguage } from "@/components/Common/Language"
 import { Logo } from "@/components/Common/Logo"
 import {
   Sidebar,
@@ -19,19 +21,20 @@ import useAuth from "@/hooks/useAuth"
 import { type Item, Main } from "./Main"
 import { User } from "./User"
 
-const baseItems: Item[] = [
-  { icon: Home, title: "Home", path: "/" },
-  { icon: Video, title: "Translator", path: "/translator" },
-  { icon: GraduationCap, title: "Teacher", path: "/teacher" },
-  { icon: BookOpen, title: "Dictionary", path: "/dictionary" },
-  { icon: Bookmark, title: "My Signs", path: "/my-signs" },
-]
-
 export function AppSidebar() {
   const { user: currentUser } = useAuth()
+  const { t } = useTranslation()
+
+  const baseItems: Item[] = [
+    { icon: Home, title: t("nav.home"), path: "/" },
+    { icon: Video, title: t("nav.translator"), path: "/translator" },
+    { icon: GraduationCap, title: t("nav.teacher"), path: "/teacher" },
+    { icon: BookOpen, title: t("nav.dictionary"), path: "/dictionary" },
+    { icon: Bookmark, title: t("nav.mySigns"), path: "/my-signs" },
+  ]
 
   const items = currentUser?.is_superuser
-    ? [...baseItems, { icon: Users, title: "Admin", path: "/admin" }]
+    ? [...baseItems, { icon: Users, title: t("nav.admin"), path: "/admin" }]
     : baseItems
 
   return (
@@ -43,6 +46,7 @@ export function AppSidebar() {
         <Main items={items} />
       </SidebarContent>
       <SidebarFooter>
+        <SidebarLanguage />
         <SidebarAppearance />
         <User user={currentUser} />
       </SidebarFooter>

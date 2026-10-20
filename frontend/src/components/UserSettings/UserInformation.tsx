@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useState } from "react"
+import type { TFunction } from "i18next"
+import { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { z } from "zod"
 
 import { UsersService, type UserUpdateMe } from "@/client"
@@ -21,18 +23,21 @@ import useCustomToast from "@/hooks/useCustomToast"
 import { cn } from "@/lib/utils"
 import { handleError } from "@/utils"
 
-const formSchema = z.object({
-  full_name: z.string().max(30).optional(),
-  email: z.email({ message: "Invalid email address" }),
-})
+const makeFormSchema = (t: TFunction) =>
+  z.object({
+    full_name: z.string().max(30).optional(),
+    email: z.email({ message: t("validation.invalidEmail") }),
+  })
 
-type FormData = z.infer<typeof formSchema>
+type FormData = z.infer<ReturnType<typeof makeFormSchema>>
 
 const UserInformation = () => {
   const queryClient = useQueryClient()
   const { showSuccessToast, showErrorToast } = useCustomToast()
+  const { t } = useTranslation()
   const [editMode, setEditMode] = useState(false)
   const { user: currentUser } = useAuth()
+  const formSchema = useMemo(() => makeFormSchema(t), [t])
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -52,7 +57,7 @@ const UserInformation = () => {
     mutationFn: (data: UserUpdateMe) =>
       UsersService.updateUserMe({ body: data }),
     onSuccess: () => {
-      showSuccessToast("User updated successfully")
+      showSuccessToast(t("settings.userUpdated"))
       toggleEditMode()
     },
     onError: handleError.bind(showErrorToast),
@@ -82,7 +87,9 @@ const UserInformation = () => {
 
   return (
     <div className="max-w-md">
-      <h3 className="text-lg font-semibold py-4">User Information</h3>
+      <h3 className="text-lg font-semibold py-4">
+        {t("settings.userInformation")}
+      </h3>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -94,7 +101,7 @@ const UserInformation = () => {
             render={({ field }) =>
               editMode ? (
                 <FormItem>
-                  <FormLabel>Full name</FormLabel>
+                  <FormLabel>{t("settings.fullName")}</FormLabel>
                   <FormControl>
                     <Input type="text" {...field} />
                   </FormControl>
@@ -102,7 +109,7 @@ const UserInformation = () => {
                 </FormItem>
               ) : (
                 <FormItem>
-                  <FormLabel>Full name</FormLabel>
+                  <FormLabel>{t("settings.fullName")}</FormLabel>
                   <p
                     className={cn(
                       "py-2 truncate max-w-sm",
@@ -122,7 +129,7 @@ const UserInformation = () => {
             render={({ field }) =>
               editMode ? (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("settings.email")}</FormLabel>
                   <FormControl>
                     <Input type="email" {...field} />
                   </FormControl>
@@ -130,7 +137,7 @@ const UserInformation = () => {
                 </FormItem>
               ) : (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("settings.email")}</FormLabel>
                   <p className="py-2 truncate max-w-sm">{field.value}</p>
                 </FormItem>
               )
@@ -145,7 +152,7 @@ const UserInformation = () => {
                   loading={mutation.isPending}
                   disabled={!form.formState.isDirty}
                 >
-                  Save
+                  {t("settings.save")}
                 </LoadingButton>
                 <Button
                   type="button"
@@ -153,12 +160,12 @@ const UserInformation = () => {
                   onClick={onCancel}
                   disabled={mutation.isPending}
                 >
-                  Cancel
+                  {t("settings.cancel")}
                 </Button>
               </>
             ) : (
               <Button type="button" onClick={toggleEditMode}>
-                Edit
+                {t("settings.edit")}
               </Button>
             )}
           </div>

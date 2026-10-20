@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Trash2 } from "lucide-react"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 
 import { ItemsService } from "@/client"
 import { Button } from "@/components/ui/button"
@@ -28,6 +29,7 @@ const DeleteItem = ({ id, onSuccess }: DeleteItemProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
   const { showSuccessToast, showErrorToast } = useCustomToast()
+  const { t } = useTranslation()
   const { handleSubmit } = useForm()
 
   const deleteItem = async (id: string) => {
@@ -37,7 +39,7 @@ const DeleteItem = ({ id, onSuccess }: DeleteItemProps) => {
   const mutation = useMutation({
     mutationFn: deleteItem,
     onSuccess: () => {
-      showSuccessToast("The item was deleted successfully")
+      showSuccessToast(t("items.deleted"))
       setIsOpen(false)
       onSuccess()
     },
@@ -59,22 +61,19 @@ const DeleteItem = ({ id, onSuccess }: DeleteItemProps) => {
         onClick={() => setIsOpen(true)}
       >
         <Trash2 />
-        Delete Item
+        {t("items.deleteItem")}
       </DropdownMenuItem>
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogHeader>
-            <DialogTitle>Delete Item</DialogTitle>
-            <DialogDescription>
-              This item will be permanently deleted. Are you sure? You will not
-              be able to undo this action.
-            </DialogDescription>
+            <DialogTitle>{t("items.deleteItem")}</DialogTitle>
+            <DialogDescription>{t("items.deleteWarning")}</DialogDescription>
           </DialogHeader>
 
           <DialogFooter className="mt-4">
             <DialogClose asChild>
               <Button variant="outline" disabled={mutation.isPending}>
-                Cancel
+                {t("items.cancel")}
               </Button>
             </DialogClose>
             <LoadingButton
@@ -82,7 +81,7 @@ const DeleteItem = ({ id, onSuccess }: DeleteItemProps) => {
               type="submit"
               loading={mutation.isPending}
             >
-              Delete
+              {t("items.delete")}
             </LoadingButton>
           </DialogFooter>
         </form>

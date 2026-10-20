@@ -1,8 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import type { TFunction } from "i18next"
 import { Pencil } from "lucide-react"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { z } from "zod"
 
 import { type UserPublic, UsersService } from "@/client"
@@ -31,25 +33,29 @@ import { LoadingButton } from "@/components/ui/loading-button"
 import useCustomToast from "@/hooks/useCustomToast"
 import { handleError } from "@/utils"
 
-const formSchema = z
-  .object({
-    email: z.email({ message: "Invalid email address" }),
-    full_name: z.string().optional(),
-    password: z
-      .string()
-      .min(8, { message: "Password must be at least 8 characters" })
-      .optional()
-      .or(z.literal("")),
-    confirm_password: z.string().optional(),
-    is_superuser: z.boolean().optional(),
-    is_active: z.boolean().optional(),
-  })
-  .refine((data) => !data.password || data.password === data.confirm_password, {
-    message: "The passwords don't match",
-    path: ["confirm_password"],
-  })
+const makeFormSchema = (t: TFunction) =>
+  z
+    .object({
+      email: z.email({ message: t("validation.invalidEmail") }),
+      full_name: z.string().optional(),
+      password: z
+        .string()
+        .min(8, { message: t("validation.passwordMin") })
+        .optional()
+        .or(z.literal("")),
+      confirm_password: z.string().optional(),
+      is_superuser: z.boolean().optional(),
+      is_active: z.boolean().optional(),
+    })
+    .refine(
+      (data) => !data.password || data.password === data.confirm_password,
+      {
+        message: t("validation.passwordsNoMatch"),
+        path: ["confirm_password"],
+      },
+    )
 
-type FormData = z.infer<typeof formSchema>
+type FormData = z.infer<ReturnType<typeof makeFormSchema>>
 
 interface EditUserProps {
   user: UserPublic
@@ -60,6 +66,8 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
   const { showSuccessToast, showErrorToast } = useCustomToast()
+  const { t } = useTranslation()
+  const formSchema = useMemo(() => makeFormSchema(t), [t])
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -77,7 +85,7 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
     mutationFn: (data: FormData) =>
       UsersService.updateUser({ path: { user_id: user.id }, body: data }),
     onSuccess: () => {
-      showSuccessToast("User updated successfully")
+      showSuccessToast(t("admin.userUpdated"))
       setIsOpen(false)
       onSuccess()
     },
@@ -103,15 +111,15 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
         onClick={() => setIsOpen(true)}
       >
         <Pencil />
-        Edit User
+        {t("admin.editUser")}
       </DropdownMenuItem>
       <DialogContent className="sm:max-w-md">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <DialogHeader>
-              <DialogTitle>Edit User</DialogTitle>
+              <DialogTitle>{t("admin.editUser")}</DialogTitle>
               <DialogDescription>
-                Update the user details below.
+                {t("admin.editUserDescription")}
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
@@ -121,11 +129,12 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Email <span className="text-destructive">*</span>
+                      {t("admin.email")}{" "}
+                      <span className="text-destructive">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Email"
+                        placeholder={t("admin.emailPlaceholder")}
                         type="email"
                         {...field}
                         required
@@ -141,9 +150,13 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                 name="full_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>{t("admin.fullName")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Full name" type="text" {...field} />
+                      <Input
+                        placeholder={t("admin.fullNamePlaceholder")}
+                        type="text"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -155,10 +168,10 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Set Password</FormLabel>
+                    <FormLabel>{t("admin.setPassword")}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Password"
+                        placeholder={t("admin.passwordPlaceholder")}
                         type="password"
                         {...field}
                       />
@@ -173,10 +186,10 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                 name="confirm_password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
+                    <FormLabel>{t("admin.confirmPassword")}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Password"
+                        placeholder={t("admin.passwordPlaceholder")}
                         type="password"
                         {...field}
                       />
@@ -197,7 +210,9 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                         onCheckedChange={field.onChange}
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Is superuser?</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("admin.isSuperuser")}
+                    </FormLabel>
                   </FormItem>
                 )}
               />
@@ -213,7 +228,9 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
                         onCheckedChange={field.onChange}
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Is active?</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("admin.isActive")}
+                    </FormLabel>
                   </FormItem>
                 )}
               />
@@ -222,11 +239,11 @@ const EditUser = ({ user, onSuccess }: EditUserProps) => {
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline" disabled={mutation.isPending}>
-                  Cancel
+                  {t("admin.cancel")}
                 </Button>
               </DialogClose>
               <LoadingButton type="submit" loading={mutation.isPending}>
-                Save
+                {t("admin.save")}
               </LoadingButton>
             </DialogFooter>
           </form>

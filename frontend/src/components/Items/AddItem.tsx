@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Plus } from "lucide-react"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { z } from "zod"
 
 import { type ItemCreate, ItemsService } from "@/client"
@@ -28,10 +29,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { LoadingButton } from "@/components/ui/loading-button"
 import useCustomToast from "@/hooks/useCustomToast"
+import i18n from "@/i18n"
 import { handleError } from "@/utils"
 
 const formSchema = z.object({
-  title: z.string().min(1, { message: "Title is required" }),
+  title: z.string().min(1, { message: i18n.t("items.titleRequired") }),
   description: z.string().optional(),
 })
 
@@ -41,6 +43,7 @@ const AddItem = () => {
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
   const { showSuccessToast, showErrorToast } = useCustomToast()
+  const { t } = useTranslation()
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -55,7 +58,7 @@ const AddItem = () => {
   const mutation = useMutation({
     mutationFn: (data: ItemCreate) => ItemsService.createItem({ body: data }),
     onSuccess: () => {
-      showSuccessToast("Item created successfully")
+      showSuccessToast(t("items.created"))
       form.reset()
       setIsOpen(false)
     },
@@ -74,15 +77,13 @@ const AddItem = () => {
       <DialogTrigger asChild>
         <Button className="my-4">
           <Plus className="mr-2" />
-          Add Item
+          {t("items.addItem")}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Add Item</DialogTitle>
-          <DialogDescription>
-            Fill in the details to add a new item.
-          </DialogDescription>
+          <DialogTitle>{t("items.addItem")}</DialogTitle>
+          <DialogDescription>{t("items.addItemDescription")}</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -93,11 +94,12 @@ const AddItem = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Title <span className="text-destructive">*</span>
+                      {t("items.itemTitle")}{" "}
+                      <span className="text-destructive">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Title"
+                        placeholder={t("items.itemTitle")}
                         type="text"
                         {...field}
                         required
@@ -113,9 +115,13 @@ const AddItem = () => {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>{t("items.description")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Description" type="text" {...field} />
+                      <Input
+                        placeholder={t("items.description")}
+                        type="text"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -126,11 +132,11 @@ const AddItem = () => {
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline" disabled={mutation.isPending}>
-                  Cancel
+                  {t("items.cancel")}
                 </Button>
               </DialogClose>
               <LoadingButton type="submit" loading={mutation.isPending}>
-                Save
+                {t("items.save")}
               </LoadingButton>
             </DialogFooter>
           </form>

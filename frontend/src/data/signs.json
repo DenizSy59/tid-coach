@@ -1,0 +1,1132 @@
+[
+  {
+    "id": 0,
+    "tr": "abla",
+    "en": "sister"
+  },
+  {
+    "id": 1,
+    "tr": "acele",
+    "en": "hurry"
+  },
+  {
+    "id": 2,
+    "tr": "acikmak",
+    "en": "hungry"
+  },
+  {
+    "id": 3,
+    "tr": "afiyet olsun",
+    "en": "enjoy your meal"
+  },
+  {
+    "id": 4,
+    "tr": "agabey",
+    "en": "brother"
+  },
+  {
+    "id": 5,
+    "tr": "agac",
+    "en": "tree"
+  },
+  {
+    "id": 6,
+    "tr": "agir",
+    "en": "heavy"
+  },
+  {
+    "id": 7,
+    "tr": "aglamak",
+    "en": "cry"
+  },
+  {
+    "id": 8,
+    "tr": "aile",
+    "en": "family"
+  },
+  {
+    "id": 9,
+    "tr": "akilli",
+    "en": "wise"
+  },
+  {
+    "id": 10,
+    "tr": "akilsiz",
+    "en": "unwise"
+  },
+  {
+    "id": 11,
+    "tr": "akraba",
+    "en": "kin"
+  },
+  {
+    "id": 12,
+    "tr": "alisveris",
+    "en": "shopping"
+  },
+  {
+    "id": 13,
+    "tr": "anahtar",
+    "en": "key"
+  },
+  {
+    "id": 14,
+    "tr": "anne",
+    "en": "mother"
+  },
+  {
+    "id": 15,
+    "tr": "arkadas",
+    "en": "friend"
+  },
+  {
+    "id": 16,
+    "tr": "ataturk",
+    "en": "ataturk"
+  },
+  {
+    "id": 17,
+    "tr": "ayakkabi",
+    "en": "shoe"
+  },
+  {
+    "id": 18,
+    "tr": "ayna",
+    "en": "mirror"
+  },
+  {
+    "id": 19,
+    "tr": "ayni",
+    "en": "same"
+  },
+  {
+    "id": 20,
+    "tr": "baba",
+    "en": "father"
+  },
+  {
+    "id": 21,
+    "tr": "bahce",
+    "en": "garden"
+  },
+  {
+    "id": 22,
+    "tr": "bakmak",
+    "en": "look"
+  },
+  {
+    "id": 23,
+    "tr": "bal",
+    "en": "honey"
+  },
+  {
+    "id": 24,
+    "tr": "bardak",
+    "en": "glass"
+  },
+  {
+    "id": 25,
+    "tr": "bayrak",
+    "en": "flag"
+  },
+  {
+    "id": 26,
+    "tr": "bayram",
+    "en": "feast"
+  },
+  {
+    "id": 27,
+    "tr": "bebek",
+    "en": "baby"
+  },
+  {
+    "id": 28,
+    "tr": "bekar",
+    "en": "single"
+  },
+  {
+    "id": 29,
+    "tr": "beklemek",
+    "en": "wait"
+  },
+  {
+    "id": 30,
+    "tr": "ben",
+    "en": "I"
+  },
+  {
+    "id": 31,
+    "tr": "benzin",
+    "en": "petrol"
+  },
+  {
+    "id": 32,
+    "tr": "beraber",
+    "en": "together"
+  },
+  {
+    "id": 33,
+    "tr": "bilgi vermek",
+    "en": "inform"
+  },
+  {
+    "id": 34,
+    "tr": "biz",
+    "en": "we"
+  },
+  {
+    "id": 35,
+    "tr": "calismak",
+    "en": "work"
+  },
+  {
+    "id": 36,
+    "tr": "carsamba",
+    "en": "wednesday"
+  },
+  {
+    "id": 37,
+    "tr": "catal",
+    "en": "fork"
+  },
+  {
+    "id": 38,
+    "tr": "cay",
+    "en": "tea"
+  },
+  {
+    "id": 39,
+    "tr": "caydanlik",
+    "en": "teapot"
+  },
+  {
+    "id": 40,
+    "tr": "cekic",
+    "en": "hammer"
+  },
+  {
+    "id": 41,
+    "tr": "cirkin",
+    "en": "ugly"
+  },
+  {
+    "id": 42,
+    "tr": "cocuk",
+    "en": "child"
+  },
+  {
+    "id": 43,
+    "tr": "corba",
+    "en": "soup"
+  },
+  {
+    "id": 44,
+    "tr": "cuma",
+    "en": "friday"
+  },
+  {
+    "id": 45,
+    "tr": "cumartesi",
+    "en": "saturday"
+  },
+  {
+    "id": 46,
+    "tr": "cuzdan",
+    "en": "wallet"
+  },
+  {
+    "id": 47,
+    "tr": "dakika",
+    "en": "minute"
+  },
+  {
+    "id": 48,
+    "tr": "dede",
+    "en": "grandfather"
+  },
+  {
+    "id": 49,
+    "tr": "degistirmek",
+    "en": "change"
+  },
+  {
+    "id": 50,
+    "tr": "devirmek",
+    "en": "topple"
+  },
+  {
+    "id": 51,
+    "tr": "devlet",
+    "en": "government"
+  },
+  {
+    "id": 52,
+    "tr": "doktor",
+    "en": "doctor"
+  },
+  {
+    "id": 53,
+    "tr": "dolu",
+    "en": "full"
+  },
+  {
+    "id": 54,
+    "tr": "dugun",
+    "en": "wedding"
+  },
+  {
+    "id": 55,
+    "tr": "dun",
+    "en": "yesterday"
+  },
+  {
+    "id": 56,
+    "tr": "dusman",
+    "en": "enemy"
+  },
+  {
+    "id": 57,
+    "tr": "duvar",
+    "en": "wall"
+  },
+  {
+    "id": 58,
+    "tr": "eczane",
+    "en": "pharmacy"
+  },
+  {
+    "id": 59,
+    "tr": "eldiven",
+    "en": "glove"
+  },
+  {
+    "id": 60,
+    "tr": "emek",
+    "en": "labor"
+  },
+  {
+    "id": 61,
+    "tr": "emekli",
+    "en": "retired"
+  },
+  {
+    "id": 62,
+    "tr": "erkek",
+    "en": "male"
+  },
+  {
+    "id": 63,
+    "tr": "et",
+    "en": "meal"
+  },
+  {
+    "id": 64,
+    "tr": "ev",
+    "en": "house"
+  },
+  {
+    "id": 65,
+    "tr": "evet",
+    "en": "yes"
+  },
+  {
+    "id": 66,
+    "tr": "evli",
+    "en": "married"
+  },
+  {
+    "id": 67,
+    "tr": "ezberlemek",
+    "en": "memorize"
+  },
+  {
+    "id": 68,
+    "tr": "fil",
+    "en": "elephant"
+  },
+  {
+    "id": 69,
+    "tr": "fotograf",
+    "en": "photograph"
+  },
+  {
+    "id": 70,
+    "tr": "futbol",
+    "en": "football"
+  },
+  {
+    "id": 71,
+    "tr": "gecmis",
+    "en": "past"
+  },
+  {
+    "id": 72,
+    "tr": "gecmis olsun",
+    "en": "get well"
+  },
+  {
+    "id": 73,
+    "tr": "getirmek",
+    "en": "bring"
+  },
+  {
+    "id": 74,
+    "tr": "gol",
+    "en": "lake"
+  },
+  {
+    "id": 75,
+    "tr": "gomlek",
+    "en": "shirt"
+  },
+  {
+    "id": 76,
+    "tr": "gormek",
+    "en": "see"
+  },
+  {
+    "id": 77,
+    "tr": "gostermek",
+    "en": "show"
+  },
+  {
+    "id": 78,
+    "tr": "gulmek",
+    "en": "laugh"
+  },
+  {
+    "id": 79,
+    "tr": "hafif",
+    "en": "lightweight"
+  },
+  {
+    "id": 80,
+    "tr": "hakli",
+    "en": "right"
+  },
+  {
+    "id": 81,
+    "tr": "hali",
+    "en": "carpet"
+  },
+  {
+    "id": 82,
+    "tr": "hasta",
+    "en": "ill"
+  },
+  {
+    "id": 83,
+    "tr": "hastane",
+    "en": "hospital"
+  },
+  {
+    "id": 84,
+    "tr": "hata",
+    "en": "fault"
+  },
+  {
+    "id": 85,
+    "tr": "havlu",
+    "en": "towel"
+  },
+  {
+    "id": 86,
+    "tr": "hayir",
+    "en": "no"
+  },
+  {
+    "id": 87,
+    "tr": "hayirli olsun",
+    "en": "congratulations"
+  },
+  {
+    "id": 88,
+    "tr": "hayvan",
+    "en": "animal"
+  },
+  {
+    "id": 89,
+    "tr": "hediye",
+    "en": "gift"
+  },
+  {
+    "id": 90,
+    "tr": "helal",
+    "en": "halal"
+  },
+  {
+    "id": 91,
+    "tr": "hep",
+    "en": "always"
+  },
+  {
+    "id": 92,
+    "tr": "hic",
+    "en": "never"
+  },
+  {
+    "id": 93,
+    "tr": "hoscakal",
+    "en": "goodbye"
+  },
+  {
+    "id": 94,
+    "tr": "icmek",
+    "en": "drink"
+  },
+  {
+    "id": 95,
+    "tr": "igne",
+    "en": "needle"
+  },
+  {
+    "id": 96,
+    "tr": "ilac",
+    "en": "medicine"
+  },
+  {
+    "id": 97,
+    "tr": "ilgilenmemek",
+    "en": "not interested"
+  },
+  {
+    "id": 98,
+    "tr": "isik",
+    "en": "light"
+  },
+  {
+    "id": 99,
+    "tr": "itmek",
+    "en": "push"
+  },
+  {
+    "id": 100,
+    "tr": "iyi",
+    "en": "good"
+  },
+  {
+    "id": 101,
+    "tr": "kacmak",
+    "en": "escape"
+  },
+  {
+    "id": 102,
+    "tr": "kahvalti",
+    "en": "breakfast"
+  },
+  {
+    "id": 103,
+    "tr": "kalem",
+    "en": "pencil"
+  },
+  {
+    "id": 104,
+    "tr": "kalorifer",
+    "en": "radiator"
+  },
+  {
+    "id": 105,
+    "tr": "kapi",
+    "en": "door"
+  },
+  {
+    "id": 106,
+    "tr": "kardes",
+    "en": "sibling"
+  },
+  {
+    "id": 107,
+    "tr": "kavsak",
+    "en": "crossroads"
+  },
+  {
+    "id": 108,
+    "tr": "kaza",
+    "en": "accident"
+  },
+  {
+    "id": 109,
+    "tr": "kemer",
+    "en": "belt"
+  },
+  {
+    "id": 110,
+    "tr": "keske",
+    "en": "if only"
+  },
+  {
+    "id": 111,
+    "tr": "kim",
+    "en": "who"
+  },
+  {
+    "id": 112,
+    "tr": "kimlik",
+    "en": "identity"
+  },
+  {
+    "id": 113,
+    "tr": "kira",
+    "en": "rent"
+  },
+  {
+    "id": 114,
+    "tr": "kitap",
+    "en": "book"
+  },
+  {
+    "id": 115,
+    "tr": "kiyma",
+    "en": "mince"
+  },
+  {
+    "id": 116,
+    "tr": "kiz",
+    "en": "female"
+  },
+  {
+    "id": 117,
+    "tr": "koku",
+    "en": "smell"
+  },
+  {
+    "id": 118,
+    "tr": "kolonya",
+    "en": "cologne"
+  },
+  {
+    "id": 119,
+    "tr": "komur",
+    "en": "coal"
+  },
+  {
+    "id": 120,
+    "tr": "kopek",
+    "en": "dog"
+  },
+  {
+    "id": 121,
+    "tr": "kopru",
+    "en": "bridge"
+  },
+  {
+    "id": 122,
+    "tr": "kotu",
+    "en": "bad"
+  },
+  {
+    "id": 123,
+    "tr": "kucak",
+    "en": "lap"
+  },
+  {
+    "id": 124,
+    "tr": "leke",
+    "en": "stain"
+  },
+  {
+    "id": 125,
+    "tr": "maas",
+    "en": "salary"
+  },
+  {
+    "id": 126,
+    "tr": "makas",
+    "en": "scissors"
+  },
+  {
+    "id": 127,
+    "tr": "masa",
+    "en": "tongs"
+  },
+  {
+    "id": 128,
+    "tr": "masallah",
+    "en": "god preserve"
+  },
+  {
+    "id": 129,
+    "tr": "melek",
+    "en": "angel"
+  },
+  {
+    "id": 130,
+    "tr": "memnun olmak",
+    "en": "be pleased"
+  },
+  {
+    "id": 131,
+    "tr": "mendil",
+    "en": "napkin"
+  },
+  {
+    "id": 132,
+    "tr": "merdiven",
+    "en": "stairs"
+  },
+  {
+    "id": 133,
+    "tr": "misafir",
+    "en": "guest"
+  },
+  {
+    "id": 134,
+    "tr": "mudur",
+    "en": "manager"
+  },
+  {
+    "id": 135,
+    "tr": "musluk",
+    "en": "tap"
+  },
+  {
+    "id": 136,
+    "tr": "nasil",
+    "en": "how"
+  },
+  {
+    "id": 137,
+    "tr": "neden",
+    "en": "why"
+  },
+  {
+    "id": 138,
+    "tr": "nerede",
+    "en": "where"
+  },
+  {
+    "id": 139,
+    "tr": "nine",
+    "en": "grandmother"
+  },
+  {
+    "id": 140,
+    "tr": "ocak",
+    "en": "oven"
+  },
+  {
+    "id": 141,
+    "tr": "oda",
+    "en": "room"
+  },
+  {
+    "id": 142,
+    "tr": "odun",
+    "en": "wood"
+  },
+  {
+    "id": 143,
+    "tr": "ogretmen",
+    "en": "teacher"
+  },
+  {
+    "id": 144,
+    "tr": "okul",
+    "en": "school"
+  },
+  {
+    "id": 145,
+    "tr": "olimpiyat",
+    "en": "olympiad"
+  },
+  {
+    "id": 146,
+    "tr": "olmaz",
+    "en": "nope"
+  },
+  {
+    "id": 147,
+    "tr": "olur",
+    "en": "allright"
+  },
+  {
+    "id": 148,
+    "tr": "onlar",
+    "en": "they"
+  },
+  {
+    "id": 149,
+    "tr": "orman",
+    "en": "forest"
+  },
+  {
+    "id": 150,
+    "tr": "oruc",
+    "en": "fasting"
+  },
+  {
+    "id": 151,
+    "tr": "ozur dilemek",
+    "en": "apologize"
+  },
+  {
+    "id": 152,
+    "tr": "pamuk",
+    "en": "cotton"
+  },
+  {
+    "id": 153,
+    "tr": "pantolon",
+    "en": "trousers"
+  },
+  {
+    "id": 154,
+    "tr": "para",
+    "en": "money"
+  },
+  {
+    "id": 155,
+    "tr": "pastirma",
+    "en": "pastrami"
+  },
+  {
+    "id": 156,
+    "tr": "patates",
+    "en": "potato"
+  },
+  {
+    "id": 157,
+    "tr": "pazar",
+    "en": "sunday"
+  },
+  {
+    "id": 158,
+    "tr": "pazartesi",
+    "en": "monday"
+  },
+  {
+    "id": 159,
+    "tr": "pencere",
+    "en": "window"
+  },
+  {
+    "id": 160,
+    "tr": "persembe",
+    "en": "thursday"
+  },
+  {
+    "id": 161,
+    "tr": "piknik",
+    "en": "picnic"
+  },
+  {
+    "id": 162,
+    "tr": "polis",
+    "en": "police"
+  },
+  {
+    "id": 163,
+    "tr": "psikoloji",
+    "en": "psychology"
+  },
+  {
+    "id": 164,
+    "tr": "rica etmek",
+    "en": "request"
+  },
+  {
+    "id": 165,
+    "tr": "saat",
+    "en": "hour"
+  },
+  {
+    "id": 166,
+    "tr": "sabun",
+    "en": "soap"
+  },
+  {
+    "id": 167,
+    "tr": "salca",
+    "en": "sauce"
+  },
+  {
+    "id": 168,
+    "tr": "sali",
+    "en": "tuesday"
+  },
+  {
+    "id": 169,
+    "tr": "sampiyon",
+    "en": "champion"
+  },
+  {
+    "id": 170,
+    "tr": "sapka",
+    "en": "hat"
+  },
+  {
+    "id": 171,
+    "tr": "savas",
+    "en": "war"
+  },
+  {
+    "id": 172,
+    "tr": "seker",
+    "en": "sugar"
+  },
+  {
+    "id": 173,
+    "tr": "selam",
+    "en": "hi"
+  },
+  {
+    "id": 174,
+    "tr": "semsiye",
+    "en": "umbrella"
+  },
+  {
+    "id": 175,
+    "tr": "sen",
+    "en": "you"
+  },
+  {
+    "id": 176,
+    "tr": "senet",
+    "en": "bill"
+  },
+  {
+    "id": 177,
+    "tr": "serbest",
+    "en": "free"
+  },
+  {
+    "id": 178,
+    "tr": "ses",
+    "en": "voice"
+  },
+  {
+    "id": 179,
+    "tr": "sevmek",
+    "en": "love"
+  },
+  {
+    "id": 180,
+    "tr": "seytan",
+    "en": "evil"
+  },
+  {
+    "id": 181,
+    "tr": "sinir",
+    "en": "border"
+  },
+  {
+    "id": 182,
+    "tr": "siz",
+    "en": "you"
+  },
+  {
+    "id": 183,
+    "tr": "soylemek",
+    "en": "say"
+  },
+  {
+    "id": 184,
+    "tr": "soz",
+    "en": "promise"
+  },
+  {
+    "id": 185,
+    "tr": "sut",
+    "en": "milk"
+  },
+  {
+    "id": 186,
+    "tr": "tamam",
+    "en": "okay"
+  },
+  {
+    "id": 187,
+    "tr": "tarak",
+    "en": "comb"
+  },
+  {
+    "id": 188,
+    "tr": "tarih",
+    "en": "date"
+  },
+  {
+    "id": 189,
+    "tr": "tatil",
+    "en": "holiday"
+  },
+  {
+    "id": 190,
+    "tr": "tatli",
+    "en": "sweet"
+  },
+  {
+    "id": 191,
+    "tr": "tavan",
+    "en": "ceiling"
+  },
+  {
+    "id": 192,
+    "tr": "tehlike",
+    "en": "danger"
+  },
+  {
+    "id": 193,
+    "tr": "telefon",
+    "en": "telephone"
+  },
+  {
+    "id": 194,
+    "tr": "terazi",
+    "en": "scales"
+  },
+  {
+    "id": 195,
+    "tr": "terzi",
+    "en": "tailor"
+  },
+  {
+    "id": 196,
+    "tr": "tesekkur",
+    "en": "thanks"
+  },
+  {
+    "id": 197,
+    "tr": "tornavida",
+    "en": "screwdriver"
+  },
+  {
+    "id": 198,
+    "tr": "turkiye",
+    "en": "turkey"
+  },
+  {
+    "id": 199,
+    "tr": "turuncu",
+    "en": "orange"
+  },
+  {
+    "id": 200,
+    "tr": "tuvalet",
+    "en": "toilet"
+  },
+  {
+    "id": 201,
+    "tr": "un",
+    "en": "flour"
+  },
+  {
+    "id": 202,
+    "tr": "uzak",
+    "en": "far"
+  },
+  {
+    "id": 203,
+    "tr": "uzgun",
+    "en": "sad"
+  },
+  {
+    "id": 204,
+    "tr": "var",
+    "en": "existing"
+  },
+  {
+    "id": 205,
+    "tr": "vergi",
+    "en": "tax"
+  },
+  {
+    "id": 206,
+    "tr": "yakin",
+    "en": "near"
+  },
+  {
+    "id": 207,
+    "tr": "yalniz",
+    "en": "alone"
+  },
+  {
+    "id": 208,
+    "tr": "yanlis",
+    "en": "wrong"
+  },
+  {
+    "id": 209,
+    "tr": "yapmak",
+    "en": "do"
+  },
+  {
+    "id": 210,
+    "tr": "yarabandi",
+    "en": "band-aid"
+  },
+  {
+    "id": 211,
+    "tr": "yardim",
+    "en": "help"
+  },
+  {
+    "id": 212,
+    "tr": "yarin",
+    "en": "tomorrow"
+  },
+  {
+    "id": 213,
+    "tr": "yasak",
+    "en": "forbidden"
+  },
+  {
+    "id": 214,
+    "tr": "yastik",
+    "en": "pillow"
+  },
+  {
+    "id": 215,
+    "tr": "yatak",
+    "en": "bed"
+  },
+  {
+    "id": 216,
+    "tr": "yavas",
+    "en": "slow"
+  },
+  {
+    "id": 217,
+    "tr": "yemek",
+    "en": "eat"
+  },
+  {
+    "id": 218,
+    "tr": "yemek pisirmek",
+    "en": "cook"
+  },
+  {
+    "id": 219,
+    "tr": "yildiz",
+    "en": "star"
+  },
+  {
+    "id": 220,
+    "tr": "yok",
+    "en": "absent"
+  },
+  {
+    "id": 221,
+    "tr": "yol",
+    "en": "road"
+  },
+  {
+    "id": 222,
+    "tr": "yorgun",
+    "en": "tired"
+  },
+  {
+    "id": 223,
+    "tr": "yumurta",
+    "en": "egg"
+  },
+  {
+    "id": 224,
+    "tr": "zaman",
+    "en": "time"
+  },
+  {
+    "id": 225,
+    "tr": "zor",
+    "en": "difficult"
+  }
+]

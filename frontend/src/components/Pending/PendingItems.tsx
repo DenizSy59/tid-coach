@@ -7,16 +7,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import i18n from "@/i18n"
 
 const PendingItems = () => (
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHead>ID</TableHead>
-        <TableHead>Title</TableHead>
-        <TableHead>Description</TableHead>
+        <TableHead>{i18n.t("items.id")}</TableHead>
+        <TableHead>{i18n.t("items.itemTitle")}</TableHead>
+        <TableHead>{i18n.t("items.description")}</TableHead>
         <TableHead>
-          <span className="sr-only">Actions</span>
+          <span className="sr-only">{i18n.t("common.actions")}</span>
         </TableHead>
       </TableRow>
     </TableHeader>

@@ -137,6 +137,68 @@ export type NewPassword = {
 };
 
 /**
+ * PracticeAttemptCreate
+ */
+export type PracticeAttemptCreate = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+    /**
+     * Score
+     */
+    score?: number | null;
+    /**
+     * Predicted Sign Id
+     */
+    predicted_sign_id?: number | null;
+};
+
+/**
+ * PracticeAttemptPublic
+ */
+export type PracticeAttemptPublic = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+    /**
+     * Score
+     */
+    score?: number | null;
+    /**
+     * Predicted Sign Id
+     */
+    predicted_sign_id?: number | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Owner Id
+     */
+    owner_id: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+};
+
+/**
+ * PracticeAttemptsPublic
+ */
+export type PracticeAttemptsPublic = {
+    /**
+     * Data
+     */
+    data: Array<PracticeAttemptPublic>;
+    /**
+     * Count
+     */
+    count: number;
+};
+
+/**
  * PrivateUserCreate
  */
 export type PrivateUserCreate = {
@@ -156,6 +218,88 @@ export type PrivateUserCreate = {
      * Is Verified
      */
     is_verified?: boolean;
+};
+
+/**
+ * SavedSignCreate
+ */
+export type SavedSignCreate = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+};
+
+/**
+ * SavedSignPublic
+ */
+export type SavedSignPublic = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Owner Id
+     */
+    owner_id: string;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+};
+
+/**
+ * SavedSignsPublic
+ */
+export type SavedSignsPublic = {
+    /**
+     * Data
+     */
+    data: Array<SavedSignPublic>;
+    /**
+     * Count
+     */
+    count: number;
+};
+
+/**
+ * SignProgress
+ */
+export type SignProgress = {
+    /**
+     * Sign Id
+     */
+    sign_id: number;
+    /**
+     * Times Practised
+     */
+    times_practised: number;
+    /**
+     * Best Score
+     */
+    best_score?: number | null;
+    /**
+     * Last Practised
+     */
+    last_practised?: string | null;
+};
+
+/**
+ * SignProgressPublic
+ */
+export type SignProgressPublic = {
+    /**
+     * Data
+     */
+    data: Array<SignProgress>;
+    /**
+     * Count
+     */
+    count: number;
 };
 
 /**
@@ -920,6 +1064,170 @@ export type itemsUpdateItemResponses = {
 };
 
 export type itemsUpdateItemResponse = itemsUpdateItemResponses[keyof itemsUpdateItemResponses];
+
+export type savedSignsReadSavedSignsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Skip
+         */
+        skip?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/api/v1/saved-signs/';
+};
+
+export type savedSignsReadSavedSignsErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type savedSignsReadSavedSignsError = savedSignsReadSavedSignsErrors[keyof savedSignsReadSavedSignsErrors];
+
+export type savedSignsReadSavedSignsResponses = {
+    /**
+     * Successful Response
+     */
+    200: SavedSignsPublic;
+};
+
+export type savedSignsReadSavedSignsResponse = savedSignsReadSavedSignsResponses[keyof savedSignsReadSavedSignsResponses];
+
+export type savedSignsCreateSavedSignData = {
+    body: SavedSignCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/saved-signs/';
+};
+
+export type savedSignsCreateSavedSignErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type savedSignsCreateSavedSignError = savedSignsCreateSavedSignErrors[keyof savedSignsCreateSavedSignErrors];
+
+export type savedSignsCreateSavedSignResponses = {
+    /**
+     * Successful Response
+     */
+    200: SavedSignPublic;
+};
+
+export type savedSignsCreateSavedSignResponse = savedSignsCreateSavedSignResponses[keyof savedSignsCreateSavedSignResponses];
+
+export type savedSignsDeleteSavedSignData = {
+    body?: never;
+    path: {
+        /**
+         * Sign Id
+         */
+        sign_id: number;
+    };
+    query?: never;
+    url: '/api/v1/saved-signs/{sign_id}';
+};
+
+export type savedSignsDeleteSavedSignErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type savedSignsDeleteSavedSignError = savedSignsDeleteSavedSignErrors[keyof savedSignsDeleteSavedSignErrors];
+
+export type savedSignsDeleteSavedSignResponses = {
+    /**
+     * Successful Response
+     */
+    200: Message;
+};
+
+export type savedSignsDeleteSavedSignResponse = savedSignsDeleteSavedSignResponses[keyof savedSignsDeleteSavedSignResponses];
+
+export type practiceReadPracticeAttemptsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Skip
+         */
+        skip?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/api/v1/practice/attempts';
+};
+
+export type practiceReadPracticeAttemptsErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type practiceReadPracticeAttemptsError = practiceReadPracticeAttemptsErrors[keyof practiceReadPracticeAttemptsErrors];
+
+export type practiceReadPracticeAttemptsResponses = {
+    /**
+     * Successful Response
+     */
+    200: PracticeAttemptsPublic;
+};
+
+export type practiceReadPracticeAttemptsResponse = practiceReadPracticeAttemptsResponses[keyof practiceReadPracticeAttemptsResponses];
+
+export type practiceCreatePracticeAttemptData = {
+    body: PracticeAttemptCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/practice/attempts';
+};
+
+export type practiceCreatePracticeAttemptErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type practiceCreatePracticeAttemptError = practiceCreatePracticeAttemptErrors[keyof practiceCreatePracticeAttemptErrors];
+
+export type practiceCreatePracticeAttemptResponses = {
+    /**
+     * Successful Response
+     */
+    200: PracticeAttemptPublic;
+};
+
+export type practiceCreatePracticeAttemptResponse = practiceCreatePracticeAttemptResponses[keyof practiceCreatePracticeAttemptResponses];
+
+export type practiceReadProgressData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/practice/progress';
+};
+
+export type practiceReadProgressResponses = {
+    /**
+     * Successful Response
+     */
+    200: SignProgressPublic;
+};
+
+export type practiceReadProgressResponse = practiceReadProgressResponses[keyof practiceReadProgressResponses];
 
 export type privateCreateUserData = {
     body: PrivateUserCreate;
