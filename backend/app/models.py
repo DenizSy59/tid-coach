@@ -2,6 +2,7 @@ import uuid
 from datetime import UTC, datetime
 
 from pydantic import EmailStr
+from sqlalchemy import UniqueConstraint
 from sqlmodel import Field, Relationship, SQLModel
 
 
@@ -53,6 +54,12 @@ class User(UserBase, table=True):
     hashed_password: str
     created_at: datetime | None = Field(default_factory=get_datetime_utc)
     items: list[Item] = Relationship(back_populates="owner", cascade_delete=True)
+    saved_signs: list[SavedSign] = Relationship(
+        back_populates="owner", cascade_delete=True
+    )
+    practice_attempts: list[PracticeAttempt] = Relationship(
+        back_populates="owner", cascade_delete=True
+    )
 
 
 # Properties to return via API, id is always required
@@ -102,6 +109,97 @@ class ItemPublic(ItemBase):
 
 class ItemsPublic(SQLModel):
     data: list[ItemPublic]
+    count: int
+
+
+# TİD Coach: the AUTSL sign list has 226 signs, with class ids 0-225
+SIGN_ID_MIN = 0
+SIGN_ID_MAX = 225
+
+
+# Shared properties
+class SavedSignBase(SQLModel):
+    sign_id: int = Field(ge=SIGN_ID_MIN, le=SIGN_ID_MAX, index=True)
+
+
+# Properties to receive on saving a sign
+class SavedSignCreate(SavedSignBase):
+    pass
+
+
+# Database model, database table inferred from class name
+class SavedSign(SavedSignBase, table=True):
+    __table_args__ = (
+        UniqueConstraint("owner_id", "sign_id", name="uq_saved_sign_owner_sign"),
+    )
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    created_at: datetime | None = Field(default_factory=get_datetime_utc)
+    owner_id: uuid.UUID = Field(
+        foreign_key="user.id", nullable=False, ondelete="CASCADE"
+    )
+    owner: User | None = Relationship(back_populates="saved_signs")
+
+
+# Properties to return via API, id is always required
+class SavedSignPublic(SavedSignBase):
+    id: uuid.UUID
+    owner_id: uuid.UUID
+    created_at: datetime | None = None
+
+
+class SavedSignsPublic(SQLModel):
+    data: list[SavedSignPublic]
+    count: int
+
+
+# Shared properties
+class PracticeAttemptBase(SQLModel):
+    sign_id: int = Field(ge=SIGN_ID_MIN, le=SIGN_ID_MAX, index=True)
+    # Both are filled in by the model later, so they stay empty for now.
+    score: float | None = Field(default=None, ge=0, le=100)
+    predicted_sign_id: int | None = Field(
+        default=None, ge=SIGN_ID_MIN, le=SIGN_ID_MAX
+    )
+
+
+# Properties to receive on recording an attempt
+class PracticeAttemptCreate(PracticeAttemptBase):
+    pass
+
+
+# Database model, database table inferred from class name
+class PracticeAttempt(PracticeAttemptBase, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    created_at: datetime | None = Field(default_factory=get_datetime_utc)
+    owner_id: uuid.UUID = Field(
+        foreign_key="user.id", nullable=False, ondelete="CASCADE"
+    )
+    owner: User | None = Relationship(back_populates="practice_attempts")
+
+
+# Properties to return via API, id is always required
+class PracticeAttemptPublic(PracticeAttemptBase):
+    id: uuid.UUID
+    owner_id: uuid.UUID
+    created_at: datetime | None = None
+
+
+class PracticeAttemptsPublic(SQLModel):
+    data: list[PracticeAttemptPublic]
+    count: int
+
+
+# How often one sign was practised, and how well
+class SignProgress(SQLModel):
+    sign_id: int
+    times_practised: int
+    best_score: float | None = None
+    last_practised: datetime | None = None
+
+
+class SignProgressPublic(SQLModel):
+    data: list[SignProgress]
     count: int
 
 

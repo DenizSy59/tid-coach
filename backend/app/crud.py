@@ -4,7 +4,17 @@ from typing import Any
 from sqlmodel import Session, select
 
 from app.core.security import get_password_hash, verify_password
-from app.models import Item, ItemCreate, User, UserCreate, UserUpdate
+from app.models import (
+    Item,
+    ItemCreate,
+    PracticeAttempt,
+    PracticeAttemptCreate,
+    SavedSign,
+    SavedSignCreate,
+    User,
+    UserCreate,
+    UserUpdate,
+)
 
 
 def create_user(*, session: Session, user_create: UserCreate) -> User:
@@ -66,3 +76,32 @@ def create_item(*, session: Session, item_in: ItemCreate, owner_id: uuid.UUID) -
     session.commit()
     session.refresh(db_item)
     return db_item
+
+
+def create_saved_sign(
+    *, session: Session, saved_sign_in: SavedSignCreate, owner_id: uuid.UUID
+) -> SavedSign:
+    db_saved_sign = SavedSign.model_validate(saved_sign_in, update={"owner_id": owner_id})
+    session.add(db_saved_sign)
+    session.commit()
+    session.refresh(db_saved_sign)
+    return db_saved_sign
+
+
+def get_saved_sign(
+    *, session: Session, owner_id: uuid.UUID, sign_id: int
+) -> SavedSign | None:
+    statement = select(SavedSign).where(
+        SavedSign.owner_id == owner_id, SavedSign.sign_id == sign_id
+    )
+    return session.exec(statement).first()
+
+
+def create_practice_attempt(
+    *, session: Session, attempt_in: PracticeAttemptCreate, owner_id: uuid.UUID
+) -> PracticeAttempt:
+    db_attempt = PracticeAttempt.model_validate(attempt_in, update={"owner_id": owner_id})
+    session.add(db_attempt)
+    session.commit()
+    session.refresh(db_attempt)
+    return db_attempt
